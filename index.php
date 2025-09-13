@@ -29,6 +29,14 @@ $router->get('/admin', 'AdminController@dashboard');
 $router->get('/admin/login', 'AdminController@login');
 $router->post('/admin/login', 'AdminController@doLogin');
 $router->get('/admin/logout', 'AdminController@logout');
+
+// Admin management routes
+$router->get('/admin/products', 'AdminController@products');
+$router->get('/admin/inventory', 'AdminController@inventory');
+$router->get('/admin/sales', 'AdminController@sales');
+$router->get('/admin/customers', 'AdminController@customers');
+$router->get('/admin/reports', 'AdminController@reports');
+
 $router->get('/pos', 'POSController@index');
 $router->get('/inventario', 'PublicController@inventory');
 $router->get('/test-connection', 'TestController@connection');
