@@ -125,7 +125,9 @@ class TestController extends Controller {
             'current_time' => date('Y-m-d H:i:s')
         ];
         
-        $this->view('test/connection', $data);
+        // Load the view directly without layout since it's a standalone HTML page
+        extract($data);
+        include ROOT_PATH . '/views/test/connection.php';
     }
 }
 ?>
