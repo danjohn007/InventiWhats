@@ -1,0 +1,82 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+logs/
+error.log
+access.log
+
+# Cache and temporary files
+cache/
+tmp/
+temp/
+*.tmp
+*.cache
+
+# Upload files
+uploads/
+files/
+
+# Configuration files with sensitive data
+config/database.local.php
+config/secrets.php
+.env
+.env.local
+
+# Vendor dependencies (if using Composer)
+vendor/
+composer.lock
+
+# NPM/Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build files
+dist/
+build/
+*.min.css
+*.min.js
+
+# OS specific
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+backup/
+
+# Session files
+sessions/
+
+# Database dumps
+*.sql.gz
+*.sql.bz2
+database_backup_*
+
+# Testing files
+phpunit.xml
+.phpunit.result.cache
+coverage/
+
+# Deployment files
+deploy.sh
+.deploy
+
+# Lock files
+*.lock
+
+# Generated documentation
+docs/generated/
+api-docs/
