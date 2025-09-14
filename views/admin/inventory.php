@@ -112,7 +112,7 @@
                                 } else {
                                     $stock_status = 'Stock normal';
                                 }
-                                $inventory_value = $item['quantity'] * $item['price'];
+                                $inventory_value = $item['quantity'] * $item['retail_price'];
                             ?>
                             <tr data-branch="<?php echo $item['branch_id']; ?>" 
                                 data-stock="<?php echo $item['quantity'] <= 0 ? 'out' : ($item['quantity'] <= $item['min_stock'] ? 'low' : 'normal'); ?>">
@@ -122,7 +122,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="fw-bold"><?php echo htmlspecialchars($item['sku']); ?></span>
+                                    <span class="fw-bold"><?php echo htmlspecialchars($item['code']); ?></span>
                                 </td>
                                 <td>
                                     <span class="badge bg-secondary">
