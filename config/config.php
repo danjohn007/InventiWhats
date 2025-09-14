@@ -12,9 +12,9 @@ date_default_timezone_set('America/Mexico_City');
 
 // Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'inventiwhats');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'ejercito_inventiwhats');
+define('DB_USER', 'ejercito_inventiwhats');
+define('DB_PASS', 'Danjohn007!');
 define('DB_CHARSET', 'utf8mb4');
 
 // Application Configuration
