@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
+    <title><?php echo isset($title) ? $title : 'Test de Conexión - InventiWhats'; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -55,6 +55,9 @@
         <!-- Overall Status -->
         <div class="row mb-4">
             <div class="col-12">
+                <?php 
+                $overall_status = isset($overall_status) ? $overall_status : false;
+                ?>
                 <div class="alert <?php echo $overall_status ? 'alert-success' : 'alert-danger'; ?> border-0 shadow" role="alert">
                     <h4 class="alert-heading">
                         <i class="fas <?php echo $overall_status ? 'fa-check-circle' : 'fa-exclamation-circle'; ?> me-2"></i>
@@ -81,7 +84,10 @@
                         </h5>
                     </div>
                     <div class="card-body p-0">
-                        <?php foreach ($tests as $test_key => $test): ?>
+                        <?php 
+                        $tests = isset($tests) ? $tests : [];
+                        if (!empty($tests)):
+                            foreach ($tests as $test_key => $test): ?>
                         <div class="test-item <?php echo $test['status'] ? 'success' : 'failed'; ?> p-4 border-bottom">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="flex-grow-1">
@@ -94,7 +100,13 @@
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                        else: ?>
+                        <div class="p-4 text-center text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            No se ejecutaron pruebas. Accede desde el controlador para ver los resultados.
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -108,12 +120,21 @@
                         </h6>
                     </div>
                     <div class="card-body">
-                        <?php foreach ($system_info as $key => $value): ?>
+                        <?php 
+                        $system_info = isset($system_info) ? $system_info : [];
+                        if (!empty($system_info)):
+                            foreach ($system_info as $key => $value): ?>
                         <div class="mb-3">
                             <small class="text-muted d-block"><?php echo str_replace('_', ' ', ucfirst($key)); ?></small>
                             <span class="fw-bold"><?php echo $value; ?></span>
                         </div>
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                        else: ?>
+                        <div class="text-center text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Información no disponible
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -126,13 +147,14 @@
                     </div>
                     <div class="card-body">
                         <div class="d-grid gap-2">
-                            <a href="<?php echo SITE_URL; ?>" class="btn btn-primary">
+                            <?php $site_url = defined('SITE_URL') ? SITE_URL : '/'; ?>
+                            <a href="<?php echo $site_url; ?>" class="btn btn-primary">
                                 <i class="fas fa-home me-2"></i>Ir al Inicio
                             </a>
-                            <a href="<?php echo SITE_URL; ?>admin/login" class="btn btn-success">
+                            <a href="<?php echo $site_url; ?>admin/login" class="btn btn-success">
                                 <i class="fas fa-sign-in-alt me-2"></i>Admin Login
                             </a>
-                            <a href="<?php echo SITE_URL; ?>inventario" class="btn btn-info">
+                            <a href="<?php echo $site_url; ?>inventario" class="btn btn-info">
                                 <i class="fas fa-boxes me-2"></i>Inventario Público
                             </a>
                             <button onclick="window.location.reload()" class="btn btn-outline-secondary">
@@ -174,7 +196,7 @@
             <div class="col-12 text-center">
                 <p class="text-muted">
                     <small>
-                        InventiWhats v<?php echo APP_VERSION; ?> - 
+                        InventiWhats v<?php echo defined('APP_VERSION') ? APP_VERSION : '1.0.0'; ?> - 
                         Sistema desarrollado con PHP <?php echo PHP_VERSION; ?> y MySQL
                     </small>
                 </p>
