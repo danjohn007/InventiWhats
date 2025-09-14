@@ -17,6 +17,55 @@
     </div>
 </div>
 
+<!-- Admin Navigation -->
+<div class="bg-light border-bottom">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+            <div class="container-fluid px-0">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="<?php echo SITE_URL; ?>admin">
+                                <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>admin/products">
+                                <i class="fas fa-boxes me-1"></i>Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>admin/inventory">
+                                <i class="fas fa-warehouse me-1"></i>Inventario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>admin/sales">
+                                <i class="fas fa-shopping-cart me-1"></i>Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>admin/customers">
+                                <i class="fas fa-users me-1"></i>Clientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>admin/reports">
+                                <i class="fas fa-chart-bar me-1"></i>Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo SITE_URL; ?>pos">
+                                <i class="fas fa-cash-register me-1"></i>POS
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
 <!-- Statistics Cards -->
 <div class="container my-4">
     <?php if (isset($error)): ?>
