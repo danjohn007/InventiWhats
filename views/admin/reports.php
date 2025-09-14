@@ -175,7 +175,7 @@
                                                         <strong><?php echo htmlspecialchars($product['name']); ?></strong>
                                                     </td>
                                                     <td>
-                                                        <code><?php echo htmlspecialchars($product['sku']); ?></code>
+                                                        <code><?php echo htmlspecialchars($product['code']); ?></code>
                                                     </td>
                                                     <td>
                                                         <span class="fw-bold text-primary">

@@ -44,6 +44,9 @@
                                 <li><a class="dropdown-item" href="<?php echo SITE_URL; ?>admin">
                                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                                 </a></li>
+                                <li><a class="dropdown-item" href="<?php echo SITE_URL; ?>pos">
+                                    <i class="fas fa-cash-register me-2"></i>Punto de Venta
+                                </a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<?php echo SITE_URL; ?>admin/logout">
                                     <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión

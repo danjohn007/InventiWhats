@@ -79,7 +79,7 @@
                             <tr data-category="<?php echo $product['category_id']; ?>" 
                                 data-status="<?php echo $product['status']; ?>">
                                 <td>
-                                    <span class="fw-bold"><?php echo htmlspecialchars($product['sku']); ?></span>
+                                    <span class="fw-bold"><?php echo htmlspecialchars($product['code']); ?></span>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -100,9 +100,9 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <strong><?php echo formatCurrency($product['price']); ?></strong><br>
+                                        <strong><?php echo formatCurrency($product['retail_price']); ?></strong><br>
                                         <small class="text-muted">
-                                            Costo: <?php echo formatCurrency($product['cost']); ?>
+                                            Costo: <?php echo formatCurrency($product['cost_price']); ?>
                                         </small>
                                     </div>
                                 </td>

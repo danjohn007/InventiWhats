@@ -38,6 +38,8 @@ $router->get('/admin/customers', 'AdminController@customers');
 $router->get('/admin/reports', 'AdminController@reports');
 
 $router->get('/pos', 'POSController@index');
+$router->post('/pos/process-sale', 'POSController@processSale');
+$router->get('/pos/search-product', 'POSController@searchProduct');
 $router->get('/inventario', 'PublicController@inventory');
 $router->get('/test-connection', 'TestController@connection');
 

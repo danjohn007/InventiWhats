@@ -160,8 +160,8 @@ class AdminController extends Controller {
                 FROM products p 
                 LEFT JOIN categories c ON p.category_id = c.id
                 LEFT JOIN inventory i ON p.id = i.product_id
-                GROUP BY p.id, p.name, p.description, p.price, p.cost, p.sku, 
-                         p.barcode, p.min_stock, p.status, p.created_at, c.name
+                WHERE p.status = 'active'
+                GROUP BY p.id
                 ORDER BY p.created_at DESC
             ");
             $data['products'] = $stmt->fetchAll();
@@ -192,8 +192,8 @@ class AdminController extends Controller {
             
             // Get inventory by branch with product info
             $stmt = $db->query("
-                SELECT i.*, p.name as product_name, p.sku, p.min_stock,
-                       b.name as branch_name, p.price
+                SELECT i.*, p.name as product_name, p.code, p.min_stock,
+                       b.name as branch_name, p.retail_price
                 FROM inventory i
                 JOIN products p ON i.product_id = p.id
                 JOIN branches b ON i.branch_id = b.id
@@ -208,7 +208,7 @@ class AdminController extends Controller {
             
             // Low stock alerts
             $stmt = $db->query("
-                SELECT p.name, p.sku, p.min_stock, b.name as branch_name,
+                SELECT p.name, p.code, p.min_stock, b.name as branch_name,
                        i.quantity, (p.min_stock - i.quantity) as deficit
                 FROM inventory i
                 JOIN products p ON i.product_id = p.id
@@ -246,7 +246,7 @@ class AdminController extends Controller {
                        c.name as customer_name, c.email as customer_email
                 FROM sales s
                 LEFT JOIN branches b ON s.branch_id = b.id
-                LEFT JOIN users u ON s.user_id = u.id
+                LEFT JOIN users u ON s.cashier_id = u.id
                 LEFT JOIN customers c ON s.customer_id = c.id
                 ORDER BY s.sale_date DESC
                 LIMIT 50
@@ -356,16 +356,16 @@ class AdminController extends Controller {
             
             // Top selling products
             $stmt = $db->query("
-                SELECT p.name, p.sku,
+                SELECT p.name, p.code,
                        SUM(sd.quantity) as total_quantity,
                        SUM(sd.subtotal) as total_revenue,
-                       AVG(sd.price) as avg_price
+                       AVG(sd.unit_price) as avg_price
                 FROM sale_details sd
                 JOIN products p ON sd.product_id = p.id
                 JOIN sales s ON sd.sale_id = s.id
                 WHERE s.status = 'completed'
                 AND s.sale_date >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-                GROUP BY p.id, p.name, p.sku
+                GROUP BY p.id, p.name, p.code
                 ORDER BY total_quantity DESC
                 LIMIT 10
             ");
